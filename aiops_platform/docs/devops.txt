@@ -1,0 +1,15 @@
+ArgoCD là công cụ GitOps dùng để deploy ứng dụng vào Kubernetes cluster.
+
+CI/CD pipeline bao gồm các bước:
+- build
+- test
+- security scan
+- deploy
+
+Docker là nền tảng container giúp đóng gói application.
+
+Kubernetes là hệ thống orchestration container.
+
+Ingress controller giúp expose service ra internet.
+
+Helm là package manager cho Kubernetes.

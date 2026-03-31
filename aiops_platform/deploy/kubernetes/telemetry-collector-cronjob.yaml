@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: aiops-telemetry-collector
+  namespace: observability
+spec:
+  schedule: "*/5 * * * *"
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: collector
+            image: python:3.12-slim
+            command: ["/bin/sh", "-lc"]
+            args:
+            - |
+              pip install --no-cache-dir requests >/dev/null 2>&1
+              python - <<'PY'
+              import json
+              from urllib.parse import quote_plus
+              from urllib.request import urlopen
+              from datetime import datetime, timedelta, timezone
+
+              def get_json(url):
+                  with urlopen(url, timeout=20) as r:
+                      return json.loads(r.read().decode('utf-8'))
+
+              now = datetime.now(timezone.utc)
+              start_ns = int((now - timedelta(minutes=5)).timestamp() * 1_000_000_000)
+              end_ns = int(now.timestamp() * 1_000_000_000)
+              q = quote_plus('{namespace="default"} |= "error"')
+              url = f"http://loki.observability:3100/loki/api/v1/query_range?query={q}&start={start_ns}&end={end_ns}&limit=200"
+              payload = get_json(url)
+              print(json.dumps({"status": payload.get("status"), "streams": len(payload.get("data", {}).get("result", []))}))
+              PY
