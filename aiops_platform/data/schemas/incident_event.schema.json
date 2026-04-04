@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "incident_event.schema.json",
+  "title": "Incident Event",
+  "type": "object",
+  "required": [
+    "incident_id",
+    "timestamp",
+    "severity",
+    "category",
+    "source_service",
+    "observed_signals"
+  ],
+  "properties": {
+    "incident_id": { "type": "string", "minLength": 1 },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "severity": {
+      "type": "string",
+      "enum": ["critical", "high", "medium", "low"]
+    },
+    "category": { "type": "string", "minLength": 1 },
+    "source_service": { "type": "string", "minLength": 1 },
+    "observed_signals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "candidate_services": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

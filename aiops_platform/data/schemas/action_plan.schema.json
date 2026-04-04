@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "action_plan.schema.json",
+  "title": "Action Plan",
+  "type": "object",
+  "required": ["incident_id", "actions"],
+  "properties": {
+    "incident_id": { "type": "string", "minLength": 1 },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["step", "command", "safety_level", "requires_approval"],
+        "properties": {
+          "step": { "type": "integer", "minimum": 1 },
+          "command": { "type": "string", "minLength": 1 },
+          "safety_level": {
+            "type": "string",
+            "enum": ["safe_read_only", "low_risk", "high_risk"]
+          },
+          "requires_approval": { "type": "boolean" },
+          "reason": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

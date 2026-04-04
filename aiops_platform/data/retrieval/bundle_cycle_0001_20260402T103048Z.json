@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "generated_at": "2026-04-02T10:30:48.920534+00:00",
+  "cycle_id": "cycle_0001",
+  "incident_count": 3,
+  "items": [
+    {
+      "incident_id": "ING-20260402103048-0e8103ee",
+      "timestamp": "2026-03-31T19:30:13+00:00",
+      "severity": "high",
+      "category": "rollout_failure",
+      "source_service": "jaeger",
+      "namespace": "default",
+      "text": "============================================================\nINCIDENT_ID: ING-20260402103048-0e8103ee\nTIMESTAMP: 2026-03-31T19:30:13+00:00\nSEVERITY: high\nCATEGORY: rollout_failure\nSOURCE_SERVICE: jaeger\nNAMESPACE: default\n\nOBSERVED_SIGNALS:\n- k8s_event_reason=Unhealthy\n- k8s_event_object_kind=Pod\n- k8s_event_type=Warning\n\nCANDIDATE_SERVICES:\n- jaeger\n\nCORRELATION_KEY: corr-650ed3226e416279\nOCCURRENCE_COUNT: 1\nFIRST_SEEN: 2026-04-02T10:30:48.917925+00:00\n\nK8S_EVENT_REASON: Unhealthy\nK8S_EVENT_MESSAGE: Readiness probe failed: Get \"http://10.244.0.10:14269/\": dial tcp 10.244.0.10:14269: connect: connection refused\nK8S_INVOLVED_KIND: Pod\nK8S_INVOLVED_NAME: jaeger-6c5b94d7d6-snfx2\n============================================================",
+      "metadata": {
+        "namespace": "default",
+        "source_kind": "Event",
+        "source_name": "jaeger-6c5b94d7d6-snfx2",
+        "event_name": "jaeger-6c5b94d7d6-snfx2.18a203d4364c198e",
+        "event_type": "Warning",
+        "event_reason": "Unhealthy",
+        "event_message": "Readiness probe failed: Get \"http://10.244.0.10:14269/\": dial tcp 10.244.0.10:14269: connect: connection refused",
+        "involved_kind": "Pod",
+        "involved_name": "jaeger-6c5b94d7d6-snfx2",
+        "event_count": 1,
+        "correlation_key": "corr-650ed3226e416279",
+        "correlation_count": 1,
+        "first_seen_at": "2026-04-02T10:30:48.917925+00:00",
+        "last_seen_at": "2026-04-02T10:30:48.917925+00:00",
+        "cooldown_seconds": 300,
+        "cooldown_suppressed": false,
+        "severity_escalation": true
+      }
+    },
+    {
+      "incident_id": "ING-20260402103048-0991ae23",
+      "timestamp": "2026-04-02T10:24:19+00:00",
+      "severity": "high",
+      "category": "rollout_failure",
+      "source_service": "opensearch-0",
+      "namespace": "default",
+      "text": "============================================================\nINCIDENT_ID: ING-20260402103048-0991ae23\nTIMESTAMP: 2026-04-02T10:24:19+00:00\nSEVERITY: high\nCATEGORY: rollout_failure\nSOURCE_SERVICE: opensearch-0\nNAMESPACE: default\n\nOBSERVED_SIGNALS:\n- k8s_event_reason=Unhealthy\n- k8s_event_object_kind=Pod\n- k8s_event_type=Warning\n- k8s_event_count=3\n- describe_signal_count=1\n\nCANDIDATE_SERVICES:\n- opensearch-0\n\nDESCRIBE_DIAGNOSTICS:\n- Warning Unhealthy 5m48s (x3 over 6m8s) kubelet spec.containers{opensearch}: Startup probe failed: dial tcp 10.244.0.81:9200: connect: connection refused\n\nCORRELATION_KEY: corr-338ca5d6ceead625\nOCCURRENCE_COUNT: 1\nFIRST_SEEN: 2026-04-02T10:30:48.917925+00:00\n\nK8S_EVENT_REASON: Unhealthy\nK8S_EVENT_MESSAGE: Startup probe failed: dial tcp 10.244.0.46:9200: connect: connection refused\nK8S_INVOLVED_KIND: Pod\nK8S_INVOLVED_NAME: opensearch-0\n============================================================",
+      "metadata": {
+        "namespace": "default",
+        "source_kind": "Event",
+        "source_name": "opensearch-0",
+        "event_name": "opensearch-0.18a2832e891e893e",
+        "event_type": "Warning",
+        "event_reason": "Unhealthy",
+        "event_message": "Startup probe failed: dial tcp 10.244.0.46:9200: connect: connection refused",
+        "involved_kind": "Pod",
+        "involved_name": "opensearch-0",
+        "event_count": 3,
+        "describe_snippets": [
+          "Warning Unhealthy 5m48s (x3 over 6m8s) kubelet spec.containers{opensearch}: Startup probe failed: dial tcp 10.244.0.81:9200: connect: connection refused"
+        ],
+        "describe_source_kind": "Pod",
+        "describe_source_name": "opensearch-0",
+        "correlation_key": "corr-338ca5d6ceead625",
+        "correlation_count": 1,
+        "first_seen_at": "2026-04-02T10:30:48.917925+00:00",
+        "last_seen_at": "2026-04-02T10:30:48.917925+00:00",
+        "cooldown_seconds": 300,
+        "cooldown_suppressed": false,
+        "severity_escalation": true
+      }
+    },
+    {
+      "incident_id": "ING-20260402103048-e8ee65fc",
+      "timestamp": "2026-04-02T10:23:47+00:00",
+      "severity": "medium",
+      "category": "dependency_failure",
+      "source_service": "minikube",
+      "namespace": "default",
+      "text": "============================================================\nINCIDENT_ID: ING-20260402103048-e8ee65fc\nTIMESTAMP: 2026-04-02T10:23:47+00:00\nSEVERITY: medium\nCATEGORY: dependency_failure\nSOURCE_SERVICE: minikube\nNAMESPACE: default\n\nOBSERVED_SIGNALS:\n- k8s_event_reason=Rebooted\n- k8s_event_object_kind=Node\n- k8s_event_type=Warning\n\nCANDIDATE_SERVICES:\n- minikube\n\nCORRELATION_KEY: corr-fd2ac3b14ed1d3b5\nOCCURRENCE_COUNT: 1\nFIRST_SEEN: 2026-04-02T10:30:48.917925+00:00\n\nK8S_EVENT_REASON: Rebooted\nK8S_EVENT_MESSAGE: Node minikube has been rebooted, boot id: c21ee6d4-20b4-4878-88df-a8ef164e2923\nK8S_INVOLVED_KIND: Node\nK8S_INVOLVED_NAME: minikube\n============================================================",
+      "metadata": {
+        "namespace": "default",
+        "source_kind": "Event",
+        "source_name": "minikube",
+        "event_name": "minikube.18a2832bed93ea1b",
+        "event_type": "Warning",
+        "event_reason": "Rebooted",
+        "event_message": "Node minikube has been rebooted, boot id: c21ee6d4-20b4-4878-88df-a8ef164e2923",
+        "involved_kind": "Node",
+        "involved_name": "minikube",
+        "event_count": 1,
+        "correlation_key": "corr-fd2ac3b14ed1d3b5",
+        "correlation_count": 1,
+        "first_seen_at": "2026-04-02T10:30:48.917925+00:00",
+        "last_seen_at": "2026-04-02T10:30:48.917925+00:00",
+        "cooldown_seconds": 300,
+        "cooldown_suppressed": false,
+        "severity_escalation": true
+      }
+    }
+  ]
+}

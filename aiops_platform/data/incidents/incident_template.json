@@ -1,0 +1,23 @@
+{
+  "incident_id": "INC-0000",
+  "timestamp": "2026-04-01T00:00:00Z",
+  "category": "dependency_failure",
+  "severity": "high",
+  "source_service": "frontend",
+  "observed_signals": [
+    "http_5xx_spike",
+    "rpc_timeout"
+  ],
+  "candidate_services": [
+    "frontend",
+    "checkoutservice"
+  ],
+  "ground_truth_root_cause": "checkoutservice",
+  "expected_safe_actions": [
+    "kubectl get deploy -n default",
+    "kubectl get pods -n default"
+  ],
+  "metadata": {
+    "notes": "Fill this template for each benchmark incident"
+  }
+}

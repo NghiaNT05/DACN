@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-02T10:30:48.918036+00:00",
+  "entries": {
+    "corr-3228ba6bde1a8418": {
+      "namespace": "default",
+      "source_service": "flagd",
+      "category": "config_drift",
+      "first_seen_at": "2026-03-31T18:39:54.446500+00:00",
+      "last_seen_at": "2026-03-31T18:40:54.577352+00:00",
+      "last_severity": "high",
+      "occurrence_count": 3,
+      "last_signals": [
+        "k8s_event_reason=FailedMount",
+        "k8s_event_object_kind=Pod",
+        "k8s_event_type=Warning",
+        "k8s_event_count=26"
+      ],
+      "suppressed_count": 2,
+      "last_emitted_at": "2026-03-31T18:39:54.446500+00:00"
+    },
+    "corr-5e6d2d63912f34e8": {
+      "namespace": "default",
+      "source_service": "product-catalog",
+      "category": "config_drift",
+      "first_seen_at": "2026-03-31T18:39:54.446500+00:00",
+      "last_seen_at": "2026-03-31T18:40:54.577352+00:00",
+      "last_severity": "high",
+      "occurrence_count": 3,
+      "last_signals": [
+        "k8s_event_reason=FailedMount",
+        "k8s_event_object_kind=Pod",
+        "k8s_event_type=Warning",
+        "k8s_event_count=26"
+      ],
+      "suppressed_count": 2,
+      "last_emitted_at": "2026-03-31T18:39:54.446500+00:00"
+    },
+    "corr-650ed3226e416279": {
+      "namespace": "default",
+      "source_service": "jaeger",
+      "category": "rollout_failure",
+      "first_seen_at": "2026-04-02T10:30:48.917925+00:00",
+      "last_seen_at": "2026-04-02T10:30:48.917925+00:00",
+      "last_severity": "high",
+      "occurrence_count": 1,
+      "last_signals": [
+        "k8s_event_reason=Unhealthy",
+        "k8s_event_object_kind=Pod",
+        "k8s_event_type=Warning"
+      ],
+      "suppressed_count": 0,
+      "last_emitted_at": "2026-04-02T10:30:48.917925+00:00"
+    },
+    "corr-338ca5d6ceead625": {
+      "namespace": "default",
+      "source_service": "opensearch-0",
+      "category": "rollout_failure",
+      "first_seen_at": "2026-04-02T10:30:48.917925+00:00",
+      "last_seen_at": "2026-04-02T10:30:48.917925+00:00",
+      "last_severity": "high",
+      "occurrence_count": 1,
+      "last_signals": [
+        "k8s_event_reason=Unhealthy",
+        "k8s_event_object_kind=Pod",
+        "k8s_event_type=Warning",
+        "k8s_event_count=3",
+        "describe_signal_count=1"
+      ],
+      "suppressed_count": 0,
+      "last_emitted_at": "2026-04-02T10:30:48.917925+00:00"
+    },
+    "corr-fd2ac3b14ed1d3b5": {
+      "namespace": "default",
+      "source_service": "minikube",
+      "category": "dependency_failure",
+      "first_seen_at": "2026-04-02T10:30:48.917925+00:00",
+      "last_seen_at": "2026-04-02T10:30:48.917925+00:00",
+      "last_severity": "medium",
+      "occurrence_count": 1,
+      "last_signals": [
+        "k8s_event_reason=Rebooted",
+        "k8s_event_object_kind=Node",
+        "k8s_event_type=Warning"
+      ],
+      "suppressed_count": 0,
+      "last_emitted_at": "2026-04-02T10:30:48.917925+00:00"
+    }
+  }
+}

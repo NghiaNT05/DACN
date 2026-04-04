@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rca_report.schema.json",
+  "title": "RCA Report",
+  "type": "object",
+  "required": [
+    "incident_id",
+    "status",
+    "root_cause_top_k",
+    "evidence",
+    "recommended_actions",
+    "confidence"
+  ],
+  "properties": {
+    "incident_id": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["ok", "insufficient_data", "error"]
+    },
+    "root_cause_top_k": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["service", "rank", "score"],
+        "properties": {
+          "service": { "type": "string" },
+          "rank": { "type": "integer", "minimum": 1 },
+          "score": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "content"],
+        "properties": {
+          "source": { "type": "string" },
+          "content": { "type": "string" },
+          "relevance": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "quality_gate": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,8 +1,0 @@
-{"type": "metric", "metric_name": "service_error_rate", "content": "{\"metric\": {\"destination_workload\": \"checkoutservice\"}, \"value\": [0, \"0.18\"]}"}
-{"type": "metric", "metric_name": "service_latency_p95_ms", "content": "{\"metric\": {\"destination_workload\": \"checkoutservice\"}, \"value\": [0, \"980\"]}"}
-{"type": "metric", "metric_name": "pod_cpu_5m", "content": "{\"metric\": {\"pod\": \"checkoutservice-abc\"}, \"value\": [0, \"0.86\"]}"}
-{"type": "log", "metadata": {"pod": "checkoutservice-abc"}, "content": "error timeout from paymentservice"}
-{"type": "log", "metadata": {"pod": "checkoutservice-abc"}, "content": "error grpc timeout"}
-{"type": "log", "metadata": {"pod": "checkoutservice-abc"}, "content": "error grpc timeout"}
-{"type": "log", "metadata": {"pod": "checkoutservice-abc"}, "content": "error grpc timeout"}
-{"type": "log", "metadata": {"pod": "checkoutservice-abc"}, "content": "error grpc timeout"}

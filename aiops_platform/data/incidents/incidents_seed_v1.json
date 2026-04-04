@@ -1,0 +1,102 @@
+[
+  {
+    "incident_id": "INC-0001",
+    "timestamp": "2026-04-01T00:10:00Z",
+    "category": "dependency_failure",
+    "severity": "high",
+    "source_service": "frontend",
+    "observed_signals": ["http_5xx_spike", "rpc_timeout"],
+    "candidate_services": ["frontend", "checkoutservice"],
+    "ground_truth_root_cause": "checkoutservice"
+  },
+  {
+    "incident_id": "INC-0002",
+    "timestamp": "2026-04-01T00:20:00Z",
+    "category": "dependency_failure",
+    "severity": "high",
+    "source_service": "checkoutservice",
+    "observed_signals": ["upstream_connection_refused", "error_log_burst"],
+    "candidate_services": ["checkoutservice", "paymentservice"],
+    "ground_truth_root_cause": "paymentservice"
+  },
+  {
+    "incident_id": "INC-0003",
+    "timestamp": "2026-04-01T00:30:00Z",
+    "category": "config_drift",
+    "severity": "high",
+    "source_service": "recommendationservice",
+    "observed_signals": ["crashloop_backoff", "invalid_env_var"],
+    "candidate_services": ["recommendationservice"],
+    "ground_truth_root_cause": "recommendationservice"
+  },
+  {
+    "incident_id": "INC-0004",
+    "timestamp": "2026-04-01T00:40:00Z",
+    "category": "config_drift",
+    "severity": "medium",
+    "source_service": "currencyservice",
+    "observed_signals": ["latency_increase", "config_map_changed"],
+    "candidate_services": ["currencyservice"],
+    "ground_truth_root_cause": "currencyservice"
+  },
+  {
+    "incident_id": "INC-0005",
+    "timestamp": "2026-04-01T00:50:00Z",
+    "category": "rollout_failure",
+    "severity": "high",
+    "source_service": "frontend",
+    "observed_signals": ["deployment_unavailable", "image_pull_backoff"],
+    "candidate_services": ["frontend"],
+    "ground_truth_root_cause": "frontend"
+  },
+  {
+    "incident_id": "INC-0006",
+    "timestamp": "2026-04-01T01:00:00Z",
+    "category": "rollout_failure",
+    "severity": "high",
+    "source_service": "adservice",
+    "observed_signals": ["failed_readiness_probe", "restart_spike"],
+    "candidate_services": ["adservice"],
+    "ground_truth_root_cause": "adservice"
+  },
+  {
+    "incident_id": "INC-0007",
+    "timestamp": "2026-04-01T01:10:00Z",
+    "category": "resource_pressure",
+    "severity": "medium",
+    "source_service": "productcatalogservice",
+    "observed_signals": ["cpu_saturation", "latency_p95_spike"],
+    "candidate_services": ["productcatalogservice"],
+    "ground_truth_root_cause": "productcatalogservice"
+  },
+  {
+    "incident_id": "INC-0008",
+    "timestamp": "2026-04-01T01:20:00Z",
+    "category": "resource_pressure",
+    "severity": "high",
+    "source_service": "cartservice",
+    "observed_signals": ["oom_killed", "pod_restart"],
+    "candidate_services": ["cartservice", "redis-cart"],
+    "ground_truth_root_cause": "cartservice"
+  },
+  {
+    "incident_id": "INC-0009",
+    "timestamp": "2026-04-01T01:30:00Z",
+    "category": "pipeline_regression",
+    "severity": "high",
+    "source_service": "frontend",
+    "observed_signals": ["new_release_error_spike", "deployment_revision_changed"],
+    "candidate_services": ["frontend"],
+    "ground_truth_root_cause": "frontend"
+  },
+  {
+    "incident_id": "INC-0010",
+    "timestamp": "2026-04-01T01:40:00Z",
+    "category": "pipeline_regression",
+    "severity": "medium",
+    "source_service": "checkoutservice",
+    "observed_signals": ["test_pass_but_runtime_fail", "new_commit_linked"],
+    "candidate_services": ["checkoutservice"],
+    "ground_truth_root_cause": "checkoutservice"
+  }
+]

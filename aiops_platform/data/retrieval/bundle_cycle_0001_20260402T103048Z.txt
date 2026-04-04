@@ -1,0 +1,97 @@
+# INCIDENT RETRIEVAL BUNDLE
+# Generated: 2026-04-02T10:30:48.920223+00:00
+# Version: 1
+# Cycle: cycle_0001
+# Incident Count: 3
+
+# This bundle is designed for chunking and embedding into a vector store.
+# Each incident block is delimited by '=' lines for easy parsing.
+
+
+## HIGH SEVERITY INCIDENTS (2)
+
+============================================================
+INCIDENT_ID: ING-20260402103048-0e8103ee
+TIMESTAMP: 2026-03-31T19:30:13+00:00
+SEVERITY: high
+CATEGORY: rollout_failure
+SOURCE_SERVICE: jaeger
+NAMESPACE: default
+
+OBSERVED_SIGNALS:
+- k8s_event_reason=Unhealthy
+- k8s_event_object_kind=Pod
+- k8s_event_type=Warning
+
+CANDIDATE_SERVICES:
+- jaeger
+
+CORRELATION_KEY: corr-650ed3226e416279
+OCCURRENCE_COUNT: 1
+FIRST_SEEN: 2026-04-02T10:30:48.917925+00:00
+
+K8S_EVENT_REASON: Unhealthy
+K8S_EVENT_MESSAGE: Readiness probe failed: Get "http://10.244.0.10:14269/": dial tcp 10.244.0.10:14269: connect: connection refused
+K8S_INVOLVED_KIND: Pod
+K8S_INVOLVED_NAME: jaeger-6c5b94d7d6-snfx2
+============================================================
+
+============================================================
+INCIDENT_ID: ING-20260402103048-0991ae23
+TIMESTAMP: 2026-04-02T10:24:19+00:00
+SEVERITY: high
+CATEGORY: rollout_failure
+SOURCE_SERVICE: opensearch-0
+NAMESPACE: default
+
+OBSERVED_SIGNALS:
+- k8s_event_reason=Unhealthy
+- k8s_event_object_kind=Pod
+- k8s_event_type=Warning
+- k8s_event_count=3
+- describe_signal_count=1
+
+CANDIDATE_SERVICES:
+- opensearch-0
+
+DESCRIBE_DIAGNOSTICS:
+- Warning Unhealthy 5m48s (x3 over 6m8s) kubelet spec.containers{opensearch}: Startup probe failed: dial tcp 10.244.0.81:9200: connect: connection refused
+
+CORRELATION_KEY: corr-338ca5d6ceead625
+OCCURRENCE_COUNT: 1
+FIRST_SEEN: 2026-04-02T10:30:48.917925+00:00
+
+K8S_EVENT_REASON: Unhealthy
+K8S_EVENT_MESSAGE: Startup probe failed: dial tcp 10.244.0.46:9200: connect: connection refused
+K8S_INVOLVED_KIND: Pod
+K8S_INVOLVED_NAME: opensearch-0
+============================================================
+
+
+## MEDIUM SEVERITY INCIDENTS (1)
+
+============================================================
+INCIDENT_ID: ING-20260402103048-e8ee65fc
+TIMESTAMP: 2026-04-02T10:23:47+00:00
+SEVERITY: medium
+CATEGORY: dependency_failure
+SOURCE_SERVICE: minikube
+NAMESPACE: default
+
+OBSERVED_SIGNALS:
+- k8s_event_reason=Rebooted
+- k8s_event_object_kind=Node
+- k8s_event_type=Warning
+
+CANDIDATE_SERVICES:
+- minikube
+
+CORRELATION_KEY: corr-fd2ac3b14ed1d3b5
+OCCURRENCE_COUNT: 1
+FIRST_SEEN: 2026-04-02T10:30:48.917925+00:00
+
+K8S_EVENT_REASON: Rebooted
+K8S_EVENT_MESSAGE: Node minikube has been rebooted, boot id: c21ee6d4-20b4-4878-88df-a8ef164e2923
+K8S_INVOLVED_KIND: Node
+K8S_INVOLVED_NAME: minikube
+============================================================
