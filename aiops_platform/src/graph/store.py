@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 # Default Neo4j connection settings
 DEFAULT_NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
 DEFAULT_NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
-DEFAULT_NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "password")
+DEFAULT_NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "password123")
 
 
 class Neo4jStore:
@@ -137,8 +137,13 @@ class Neo4jStore:
             RETURN s
         """
         
+        # Serialize dict fields to JSON strings (Neo4j doesn't support nested objects)
+        node_data = node.to_dict()
+        node_data['labels'] = json.dumps(node_data.get('labels') or {})
+        node_data['annotations'] = json.dumps(node_data.get('annotations') or {})
+        
         with self.session() as session:
-            result = session.run(query, **node.to_dict())
+            result = session.run(query, **node_data)
             return result.single() is not None
     
     def get_service(self, service_id: str) -> Optional[ServiceNode]:
@@ -620,7 +625,7 @@ def get_graph_store(use_neo4j: bool = True, **kwargs) -> "Neo4jStore | JsonGraph
     """Factory function to get appropriate graph store.
     
     Args:
-        use_neo4j: Whether to use Neo4j (falls back to JSON if unavailable)
+        use_neo4j: Whether to use Neo4j (default: True)
         **kwargs: Arguments for store initialization
         
     Returns:
@@ -630,6 +635,7 @@ def get_graph_store(use_neo4j: bool = True, **kwargs) -> "Neo4jStore | JsonGraph
         try:
             store = Neo4jStore(**kwargs)
             store.driver  # Test connection
+            logger.info("Using Neo4j graph store")
             return store
         except Exception as e:
             logger.warning(f"Neo4j unavailable ({e}), falling back to JSON store")

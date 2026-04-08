@@ -25,11 +25,12 @@ DEFAULT_COLLECTION_NAME = "aiops_knowledge_v2"  # new collection for upgraded em
 DEFAULT_DISTANCE_METRIC = "cosine"
 
 # Search settings
-DEFAULT_TOP_K = 10  # retrieve more for reranking
-DEFAULT_SCORE_THRESHOLD = 0.15  # low threshold for initial retrieval, reranker will filter
+# Based on empirical testing - start with low threshold, let reranker filter
+DEFAULT_TOP_K = 15  # retrieve more candidates for reranking
+DEFAULT_SCORE_THRESHOLD = 0.0  # no threshold - let reranker decide relevance
 RERANK_TOP_K = 5  # final results after reranking
 RERANK_SCORE_THRESHOLD = 0.0  # rerank scores are on different scale
 
-# Hybrid search weights
+# Hybrid search weights (Pinecone/Weaviate recommended: 70/30)
 VECTOR_WEIGHT = 0.7  # semantic similarity weight
 BM25_WEIGHT = 0.3  # keyword matching weight
